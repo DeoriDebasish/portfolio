@@ -32,6 +32,6 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to S3 with aws s3 sync
-        run: aws s3 sync . s3://$S3_BUCKET_NAME --delete
+        run: aws s3 sync ./build s3://$S3_BUCKET_NAME --delete
         env:
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
