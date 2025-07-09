@@ -33,3 +33,9 @@ jobs:
         run: aws s3 sync ./dist s3://$S3_BUCKET_NAME --delete
         env:
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+
+      - name: Configure S3 website
+        run: |
+          aws s3 website s3://$S3_BUCKET_NAME --index-document index.html --error-document index.html
+        env:
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
